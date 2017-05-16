@@ -1,0 +1,13 @@
+
+<h1>Signup!</h1>
+
+<%= form_for :designer, url: '/designers' do |f| %>
+
+	<p>Name: <%= f.text_field :name %></p>
+	<p>Phone: <%= f.text_field :phone %></p>
+	<p>Email: <%= f.text_field :email %></p>
+	<p>Password: <%= f.password_field :password %></p>
+	<p>Password Confirmation: <%= f.password_field :password_confirmation %></p>
+	<p><%= f.submit "Submit" %></p>
+
+<% end %>

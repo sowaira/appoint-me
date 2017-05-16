@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  os: MyString
+  device_id: MyString
+  language: MyString
+  reg_id: MyString
+  access_token: MyText
+
+two:
+  user_id: 1
+  os: MyString
+  device_id: MyString
+  language: MyString
+  reg_id: MyString
+  access_token: MyText
