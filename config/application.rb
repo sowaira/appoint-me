@@ -11,6 +11,7 @@ module AppointMe
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    config.autoload_paths += %W(#{Rails.root}/lib)
+    config.eager_load_paths += %W(#{Rails.root}/lib)
   end
 end
