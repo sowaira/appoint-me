@@ -3,10 +3,10 @@ Rails.application.routes.draw do
 	
 	# designers
 		get '/login' => 'sessions#new'
-		post '/login' => 'sessions#create'
+		post '/login' => 'sessions#create', as: :login_desiger
 		get '/logout' => 'sessions#destroy'
 		
-		get '/signup' => 'designers#new'
+		get '/signup' => 'designers#new',  as: :signup_designer
 		post '/designers' => 'designers#create' , as: :signup_desiger
 	# get '/designers/login' => "designers#login", as: :login
 

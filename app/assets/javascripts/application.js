@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery.validationEngine
 //= require jquery.validationEngine-en
+//= require bootstrap.min
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .

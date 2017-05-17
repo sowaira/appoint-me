@@ -1,13 +1,28 @@
 
-<h1>Signup!</h1>
+<div class="page-header">
+	<h1>Signup</h1>
+</div>
 
 <%= form_tag signup_desiger_path, method: "POST", class: "js-form" do %>
-
-	<p>Name: <input type="text" name="designer[name]" class="validate[required]" /></p>
-	<p>Phone: <input type="text" name="designer[phone]" class="validate[required,custom[onlyNumberSp]]" /></p>
-	<p>Email: <input class="validate[required,custom[email]]"  name="designer[email]" type="text" /></p>
-	<p>Password: <input type="password" name="designer[password]" class="validate[required]"/></p>
-	<p>Password Confirmation: <input type="password" name="designer[password_confirmation]" class="validate[required]" /></p>
-	<p><input type="submit" name="commit" value="Submit"  /></p>
-
+	<div class="form-group">
+		<label for="name">Name:</label>
+		<input type="text" name="designer[name]" class=" form-control" />
+	</div>
+	<div class="form-group">
+		<label for="phone">Phone:</label>
+		<input type="text" name="designer[phone]" class="form-control validate[required,custom[onlyNumberSp]]" />
+	</div>
+	<div class="form-group">
+		<label for="email">Email:</label>
+		<input class="form-control validate[required,custom[email]]"  name="designer[email]" type="text" />
+	</div>
+	<div class="form-group">
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="designer[password]" class="form-control validate[required]"/>
+	</div>
+	<div class="form-group">
+		<label for="password_confirmation">Password Confirmation:</label>
+		 <input type="password" name="designer[password_confirmation]" class="form-control validate[required,equals[password]]" />
+	</div>
+	<button type="submit" name="commit" class="btn btn-lg btn-danger" />Signup</button>
 <%end%>

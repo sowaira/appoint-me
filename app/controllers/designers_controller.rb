@@ -6,8 +6,8 @@ class DesignersController < ApplicationController
 
     def create
     	missing_fields = Utils.check_missing_fields(params, ["name","email", "password", "password_confirmation", "phone"], "designer")
-    	return redirect_to '/signup' , :flash => { :error => "Missing required fields" } if ( missing_fields.size > 0 )
-    	return redirect_to '/signup' , :flash => { :error => "Password and password confirmation don't match" } if params["designer"]["password_confirmation"] !=  params["designer"]["password"]
+    	return redirect_to signup_designer_path, alert: "Missing required fields"  if ( missing_fields.size > 0 )
+    	return redirect_to signup_designer_path, alert: "Password and password confirmation don't match"  if params["designer"]["password_confirmation"] !=  params["designer"]["password"]
     	salt = BCrypt::Engine.generate_salt
 		encrypted_password = BCrypt::Engine.hash_secret(params["designer"]["password"], salt)
     	designer = Designer.new(name: params["designer"]["name"],phone: params["designer"]["phone"],

@@ -5,8 +5,8 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		designer = Designer.find_by_email(params[:email])
-	    if designer && Utils.match_password(designer.password, params[:password], designer.salt)
+		designer = Designer.find_by_email(params["designer"]["email"])
+	    if designer && Utils.match_password(designer.password, params["designer"]["password"], designer.salt)
 	      session[:designer_id] = designer.id
 	      redirect_to '/'
 	    else

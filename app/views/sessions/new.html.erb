@@ -1,8 +1,16 @@
-<h1>Login</h1>
 
-	<%= form_tag '/login' do %>
-		<p>Email: <%= text_field_tag :email %></p>
-		<p>Password: <%= password_field_tag :password %></p>
-	<p><%= submit_tag "Submit" %></p>
+<div class="page-header">
+	<h1>Login</h1>
+</div>
 
+<%= form_tag login_desiger_path, method: "POST", class: "js-form" do %>
+	<div class="form-group">
+		<label for="email">Email:</label>
+		<input class="form-control validate[required,custom[email]]"  name="designer[email]" type="text" />
+	</div>
+	<div class="form-group">
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="designer[password]" class="form-control validate[required]"/>
+	</div>
+	<button type="submit" name="commit" class="btn btn-lg btn-danger" />Login</button>
 <% end %>
