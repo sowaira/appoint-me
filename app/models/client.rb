@@ -3,7 +3,7 @@ class Client < ApplicationRecord
 
 	def self.sign_in(params)
 			unconfirmed_client = self.find_by(unconfirmed_email: params["client"]["email"])
-			return Utils.render_json({codeError: 13, message: "client not confirmed yet!"}, 403) if unconfirmed_client
+			return Utils.render_json({codeError: 13, message: "Client account not confirmed yet!"}, 403) if unconfirmed_client
 			client = self.find_by(email: params["client"]["email"])
 			if client and Utils.match_password(client.password, params["client"]["password"], client.salt)
 				auth = Authentication.create_auth(params, client)

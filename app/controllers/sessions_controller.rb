@@ -5,6 +5,8 @@ class SessionsController < ApplicationController
 	end
 
 	def create
+	    unconfirmed_designer = Designer.find_by(unconfirmed_email: params["designer"]["email"])
+		return redirect_to login_designer_path, alert: "Designer account not confirmed yet!" if unconfirmed_designer
 		designer = Designer.find_by_email(params["designer"]["email"])
 	    if designer && Utils.match_password(designer.password, params["designer"]["password"], designer.salt)
 	      session[:designer_id] = designer.id

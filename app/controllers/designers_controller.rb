@@ -11,9 +11,10 @@ class DesignersController < ApplicationController
     	salt = BCrypt::Engine.generate_salt
 		encrypted_password = BCrypt::Engine.hash_secret(params["designer"]["password"], salt)
     	designer = Designer.new(name: params["designer"]["name"],phone: params["designer"]["phone"],
-    		email: params["designer"]["email"], password: encrypted_password, salt:salt)
-    	#raise
+    		unconfirmed_email: params["designer"]["email"], password: encrypted_password, salt:salt,
+    		confirmation_token: Digest::SHA1.hexdigest([Time.now, rand].join))
     	if designer.save
+    		MailerMailer.confirmation_email_designer(designer).deliver
     		session[:designer_id] = designer.id 
     		redirect_to '/'
     	else
@@ -21,11 +22,8 @@ class DesignersController < ApplicationController
     	end
     end
 
+	
 
-	# private
-	# def designer_params
-	# 		params.require(:designer).permit(:name, :phone, :email, :password, :password_confirmation)
-	# end
 end
 
 

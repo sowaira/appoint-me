@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+	</head>
+	<body>
+		<p>Hello <%= @designer.name %>,</p>
+		<p>You can confirm your account email through the link below:</p>
+		<p>
+		<%= link_to 'Confirm my account', email_confirmation_designer_url(confirmation_token: @designer.confirmation_token) %>
+		</p>
+	</body>
+</html>

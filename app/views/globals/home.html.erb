@@ -1,0 +1,7 @@
+
+<% unless current_designer %>
+	<%= link_to "Signup as designer", signup_designer_path %><br>
+	<%= link_to "Login as designer", login_designer_path %>
+<% else %>
+	<%= link_to "Logout", logout_designer_path %>
+<% end %>

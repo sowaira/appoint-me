@@ -10,14 +10,18 @@
   </head>
 
   <body>
-  	<div class="container" role="main">
-    <%if alert.present? %>
-    <div class="alert alert-warning">
-      <strong><p id="alert"><%= alert %></p></strong>
-    </div>
-    <%end%>
-    <%= yield %>
 
+    <%= render partial: "layouts/header" %>
+    
+    <div class="container" role="main">
+
+      
+      <%if alert.present? %>
+        <div class="alert alert-warning">
+          <strong><p id="alert"><%= alert %></p></strong>
+        </div>
+      <%end%>
+      <%= yield %>
 
     </div>
   </body>

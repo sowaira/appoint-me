@@ -12,6 +12,17 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap.min
+ *= require bootstrap
  *= require validationEngine.jquery
  */
+
+.header {
+	background-color: #ff5353;
+	height: 70px;
+	margin-bottom: 20px;
+	width: 100%;
+	float: left;
+	color: white;
+	font-weight: bold;
+	padding: 0 10px;
+}
