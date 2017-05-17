@@ -1,13 +1,13 @@
 
 <h1>Signup!</h1>
 
-<%= form_for :designer, url: '/designers' do |f| %>
+<%= form_tag signup_desiger_path, method: "POST", class: "js-form" do %>
 
-	<p>Name: <%= f.text_field :name %></p>
-	<p>Phone: <%= f.text_field :phone %></p>
-	<p>Email: <%= f.text_field :email %></p>
-	<p>Password: <%= f.password_field :password %></p>
-	<p>Password Confirmation: <%= f.password_field :password_confirmation %></p>
-	<p><%= f.submit "Submit" %></p>
+	<p>Name: <input type="text" name="designer[name]" class="validate[required]" /></p>
+	<p>Phone: <input type="text" name="designer[phone]" class="validate[required,custom[onlyNumberSp]]" /></p>
+	<p>Email: <input class="validate[required,custom[email]]"  name="designer[email]" type="text" /></p>
+	<p>Password: <input type="password" name="designer[password]" class="validate[required]"/></p>
+	<p>Password Confirmation: <input type="password" name="designer[password_confirmation]" class="validate[required]" /></p>
+	<p><input type="submit" name="commit" value="Submit"  /></p>
 
-<% end %>
+<%end%>

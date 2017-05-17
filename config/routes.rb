@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 		get '/logout' => 'sessions#destroy'
 		
 		get '/signup' => 'designers#new'
-		post '/designers' => 'designers#create'
+		post '/designers' => 'designers#create' , as: :signup_desiger
 	# get '/designers/login' => "designers#login", as: :login
 
 		get '/email_confirmation' => "callbacks#email_confirmation", as: :email_confirmation

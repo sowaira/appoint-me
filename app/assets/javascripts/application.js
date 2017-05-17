@@ -11,6 +11,15 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.validationEngine
+//= require jquery.validationEngine-en
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function () {
+	$(".js-form").validationEngine();
+});
+
+
+
