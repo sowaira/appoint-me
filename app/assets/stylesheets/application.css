@@ -26,3 +26,14 @@
 	font-weight: bold;
 	padding: 0 10px;
 }
+
+.center-block {
+	margin: 0 auto;
+}
+
+.menu-item {
+	margin: 20px 10px;
+	font-size: 18px;
+	color: white !important;
+}
+
