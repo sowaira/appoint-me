@@ -1,5 +1,21 @@
 class DesignersController < ApplicationController
+    before_action :authorize, only: [:settings, :destroy]
 
+    def settings
+        
+    end
+
+    def update_settings
+        missing_fields = Utils.check_missing_fields(params, ["name", "phone"], "designer")
+        return redirect_to settings_designer_path, alert: "Missing required fields"  if ( missing_fields.size > 0 )
+        current_designer.update(name: params["designer"]["name"],
+                                phone: params["designer"]["phone"],
+                                bio: params["designer"]["bio"]
+                                )    
+        current_designer.picture = params["designer"]["picture"]
+        current_designer.save
+        redirect_to settings_designer_path, notice: "Infos Updated successfully"
+    end
 
     def login
     end

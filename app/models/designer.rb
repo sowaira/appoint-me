@@ -1,5 +1,7 @@
 class Designer < ApplicationRecord
-	
+	mount_uploader :picture, GeneralPictureUploader
+
+
 	def self.confirm_email_designer(params)
 		designer = self.find_by(confirmation_token: params["confirmation_token"])
 		if designer
@@ -23,9 +25,11 @@ class Designer < ApplicationRecord
 
     	designer
 	end
-    
 
-    def self.reset_password(params, current_user)
-    	
+    def forename
+        (self.name.present? ? self.name : self.email)
     end
+
+
+
 end

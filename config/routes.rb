@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 		get '/designers/logout' => 'designers#destroy', as: :logout_designer
 		get '/designers/define_password' => 'designers#define_password', as: :define_password_designer
 		post '/designers/reset_password' => 'designers#reset_password', as: :reset_password_designer
+		get '/designers/settings' => 'designers#settings', as: :settings_designer
+		put '/designers/' => 'designers#update_settings', as: :update_settings_designer
 
 
 		

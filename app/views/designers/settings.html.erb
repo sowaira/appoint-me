@@ -1,0 +1,23 @@
+<%= form_tag update_settings_designer_path, method: "PUT", class: "js-form", multipart: true do %>
+	<div class="form-group">
+		<img src="<%=current_designer.picture.url%>" class="thumbnail">
+	</div>
+	<div class="form-group">
+		<label for="name">Change Profile picture:</label>
+		<input name="designer[picture]" type="file" />
+	</div>
+	<div class="form-group">
+		<label for="name">Name:</label>
+		<input class="form-control validate[required]"  name="designer[name]" type="text" value="<%=current_designer.name%>"/>
+	</div>
+	<div class="form-group">
+		<label for="name">Phone:</label>
+		<input class="form-control validate[required,custom[phone]]"  name="designer[phone]" type="text" value="<%=current_designer.phone%>" />
+	</div>
+	<div class="form-group">
+		<label for="name">Bio:</label>
+		<textarea class="form-control validate[required]"  name="designer[bio]"><%=current_designer.bio%></textarea>
+	</div>
+
+	<button type="submit" name="commit" class="btn btn-lg btn-danger" />Update profile</button>
+<% end %>

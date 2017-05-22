@@ -7,5 +7,9 @@
 		<%= link_to "Login as designer", login_designer_path , class:"pull-right menu-item" %>
 	<% else %>
 		<%= link_to "Logout", logout_designer_path, class:"pull-right menu-item" %>
+		<%= link_to "Settings", settings_designer_path, class:"pull-right menu-item" %>
+		<div class="pull-right menu-item">
+			Hi <i><%= current_designer.forename %></i>, 
+		</div>
 	<% end %>
 </div>
