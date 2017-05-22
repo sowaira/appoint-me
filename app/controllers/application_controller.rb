@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     helper_method :current_designer
 
     def authorize
-      redirect_to '/login' unless current_designer
+      redirect_to login_designer_path unless current_designer
     end
 
 end

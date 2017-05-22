@@ -21,6 +21,13 @@
           <strong><p id="alert"><%= alert %></p></strong>
         </div>
       <%end%>
+
+      <%if notice.present? %>
+        <div class="alert alert-info">
+          <strong><p id="alert"><%= notice %></p></strong>
+        </div>
+      <%end%>
+
       <%= yield %>
 
     </div>

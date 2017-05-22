@@ -8,22 +8,26 @@ Rails.application.routes.draw do
 		get '/' => 'globals#home', as: :home
 	
 	# designers
-		get '/login' => 'sessions#new', as: :login_designer
-		post '/login' => 'sessions#create', as: :login_desiger
-		get '/logout' => 'sessions#destroy', as: :logout_designer
-		
-		get '/signup' => 'designers#new',  as: :signup_designer
-		post '/designers' => 'designers#create' , as: :signup_desiger
+		get '/designers/login' => 'designers#login', as: :login_designer
+		post '/designers/session' => 'designers#create_session', as: :create_session_designer
+		get '/designers/logout' => 'designers#destroy', as: :logout_designer
+		get '/designers/define_password' => 'designers#define_password', as: :define_password_designer
+		post '/designers/reset_password' => 'designers#reset_password', as: :reset_password_designer
 
-		get '/email_confirmation' => "callbacks#email_confirmation", as: :email_confirmation
-		get '/email_confirmation_designer' => "callbacks#email_confirmation_designer", as: :email_confirmation_designer
+
+		
+		get '/designers/signup' => 'designers#new',  as: :signup_designer
+		post '/designers' => 'designers#create' , as: :create_designer
+
+		get '/clients/email_confirmation' => "callbacks#email_confirmation", as: :email_confirmation
+		get '/designers/email_confirmation' => "callbacks#email_confirmation_designer", as: :email_confirmation_designer
 
   #api
 	namespace :api , :defaults => { :format => 'json' } do
     
-    	post 'sign_up', to: 'clients#sign_up'
-    	post 'sign_in', to: 'clients#sign_in'
-    	delete 'logout', to: 'clients#logout'
+    	post '/clients/sign_up', to: 'clients#sign_up'
+    	post '/clients/sign_in', to: 'clients#sign_in'
+    	delete '/clients/logout', to: 'clients#logout'
 
     end
 

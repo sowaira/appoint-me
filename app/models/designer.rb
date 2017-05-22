@@ -6,6 +6,7 @@ class Designer < ApplicationRecord
 			self.where(unconfirmed_email: designer.unconfirmed_email).update_all(unconfirmed_email: "")
 			designer.update(email: designer.unconfirmed_email, unconfirmed_email: "", confirmation_token: "", confirmed_at: Time.now) 
 		end
+		designer
 	end
 
 	def self.invite_designer(params)
@@ -23,4 +24,8 @@ class Designer < ApplicationRecord
     	designer
 	end
     
+
+    def self.reset_password(params, current_user)
+    	
+    end
 end

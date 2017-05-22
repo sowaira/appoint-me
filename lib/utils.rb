@@ -17,7 +17,9 @@ class Utils
 		end
 
 		def match_password(encrypted_password, password="", salt)
-		  encrypted_password == BCrypt::Engine.hash_secret(password, salt)
+		  	encrypted_password == BCrypt::Engine.hash_secret(password, salt)
+		rescue
+			false
 		end
 	end
 end
