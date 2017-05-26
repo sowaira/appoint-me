@@ -17,9 +17,9 @@ ActiveAdmin.register Designer do
 	  def create
 	    @designer = Designer.invite_designer(params)
 	    if @designer and  @designer.errors.empty?
-	      redirect_to admin_designer_path(@designer)
+	      redirect_to superadmin_designer_path(@designer)
 	    else
-	      redirect_to new_admin_designer_path
+	      redirect_to new_superadmin_designer_path
 	      return
 	    end
 	  end
@@ -28,7 +28,7 @@ ActiveAdmin.register Designer do
 
 	index do
 	  column("Id") do |item|
-	    link_to item.id, admin_designer_path(item)
+	    link_to item.id, superadmin_designer_path(item)
 	  end
 	  column("Email") do |item|
 	    item.email

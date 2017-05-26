@@ -1,6 +1,6 @@
 <%= form_tag update_settings_designer_path, method: "PUT", class: "js-form", multipart: true do %>
 	<div class="form-group">
-		<img src="<%=current_designer.picture.url%>" class="thumbnail">
+		<img src="<%=current_designer.picture.url%>" class="thumbnail" width="100">
 	</div>
 	<div class="form-group">
 		<label for="name">Change Profile picture:</label>
