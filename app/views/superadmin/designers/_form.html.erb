@@ -1,7 +1,7 @@
-<%= semantic_form_for @designer, url: admin_designers_path, :html => {:class => "form-horizontal" } do |f| %>
+<%= semantic_form_for @designer, url: superadmin_designers_path, :html => {:class => "form-horizontal" } do |f| %>
   <div class="row">
       <div class="col-md-6">
-        <%= f.inputs "Invite Designers to the portal" do %>
+        <%= f.inputs "Invite designers to the portal" do %>
          
          <li class="string input optional stringish" id="designer_email_input"><label for="designer_email" class="label">Email</label><input id="designer_email" type="text" name="designer[email]">
 
@@ -10,11 +10,6 @@
         <% end %>
       </div>
   </div>
-
-
-
-
-
 
   <%= f.actions %>
 <% end %>

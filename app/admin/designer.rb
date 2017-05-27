@@ -23,6 +23,7 @@ ActiveAdmin.register Designer do
 	      return
 	    end
 	  end
+	  
 	end
 
 
