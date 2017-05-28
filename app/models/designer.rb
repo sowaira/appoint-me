@@ -1,4 +1,6 @@
 class Designer < ApplicationRecord
+    belongs_to :business
+
 	mount_uploader :picture, GeneralPictureUploader
 
 
@@ -15,7 +17,8 @@ class Designer < ApplicationRecord
     	missing_fields = Utils.check_missing_fields(params, ["email"], "designer")
 
     	designer = Designer.new(	
-    		unconfirmed_email: params["designer"]["email"],
+            unconfirmed_email: params["designer"]["email"],
+    		business_id: params["designer"]["business_id"],
     		confirmation_token: Digest::SHA1.hexdigest([Time.now, rand].join))
     	return if missing_fields.size > 0 or Designer.find_by(email: params["designer"]["email"])
 

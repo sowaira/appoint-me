@@ -15,4 +15,14 @@ class CallbacksController < ApplicationController
 		end
 	end
 
+	def email_confirmation_business
+		business = Business.confirm_email_business(params)
+		if business and not business.encripted_password.present?
+			session[:current_email] = business.email 
+			redirect_to define_password_business_path
+		else
+			redirect_to root_url
+		end
+	end
+
 end

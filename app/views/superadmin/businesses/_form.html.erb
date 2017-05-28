@@ -1,0 +1,45 @@
+<% if @business.id
+	url = superadmin_business_path
+else
+	url = superadmin_businesses_path
+end%>
+
+<%= semantic_form_for @business, url: url, :html => {:class => "form-horizontal", multipart: true } do |f| %>
+  <div class="row">
+      <div class="col-md-6">
+        <%= f.inputs "fill business information" do %>
+         
+			<li class="string input optional stringish" id="business_name_input"><label for="business_name" class="label">Name</label><input id="designer_name" type="text" name="business[name]" value="<%=@business.name%>">
+			</li>
+
+			<% unless @business.id%>
+				<li class="string input optional stringish" id="business_email_input"><label for="business_email" class="label">Admin email</label><input id="designer_email" type="text" name="business[email]" >
+				</li>
+			<% end %>
+
+			<li class="string input optional stringish" id="business_address_input"><label for="business_address" class="label">Address</label><input id="designer_address" type="text" name="business[address]" value="<%=@business.address%>">
+			</li>
+
+			<li class="string input optional stringish" id="business_latitude_input"><label for="business_latitude" class="label">Latitude</label><input id="designer_latitude" type="text" name="business[latitude]" value="<%=@business.latitude%>">
+			</li>
+
+			<li class="string input optional stringish" id="business_longitude_input"><label for="business_longitude" class="label">Longitude</label><input id="designer_longitude" type="text" name="business[longitude]" value="<%=@business.longitude%>">
+			</li>
+
+			<% if  @business and @business.picture.url.present?%>
+				<li class="string input optional stringish" id="business_picture_input">
+					<label for="business_picture" class="label" >Current Business picture:</label>
+					<img src="<%=@business.picture.url%>" class="my-image-size">
+				</li>				
+			<% end %>
+
+			<li class="string input optional stringish" id="business_picture_input">
+				<label for="business_picture" class="label" >Change Business picture:</label>
+				<input name="business[picture]" type="file" />
+			</li>
+        <% end %>
+      </div>
+  </div>
+
+  <%= f.actions %>
+<% end %>

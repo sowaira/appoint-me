@@ -23,8 +23,19 @@ Rails.application.routes.draw do
 
 		get '/clients/email_confirmation' => "callbacks#email_confirmation", as: :email_confirmation
 		get '/designers/email_confirmation' => "callbacks#email_confirmation_designer", as: :email_confirmation_designer
+	
 
-  #api
+	#businesses
+		get '/businesses/email_confirmation' => "callbacks#email_confirmation_business", as: :email_confirmation_business
+  		get '/businesses/define_password' => 'businesses#define_password', as: :define_password_business
+		post '/businesses/reset_password' => 'businesses#reset_password', as: :reset_password_business
+		get '/businesses/login' => 'businesses#login', as: :login_business
+		post '/businesses/session' => 'businesses#create_session', as: :create_session_business
+		get '/businesses/logout' => 'businesses#destroy', as: :logout_business
+		get '/businesses/dashboard' => 'businesses#dashboard', as: :business_dashboard
+
+
+  	#api
 	namespace :api , :defaults => { :format => 'json' } do
     
     	post '/clients/sign_up', to: 'clients#sign_up'

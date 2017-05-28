@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+	</head>
+	<body>
+		<p>Hello <%= @business.name %>,</p>
+		<p>You can confirm your business account email through the link below:</p>
+		<p>
+		<%= link_to 'Confirm my account', email_confirmation_business_url(confirmation_token: @business.confirmation_token) %>
+		</p>
+	</body>
+</html>

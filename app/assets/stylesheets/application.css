@@ -37,3 +37,9 @@
 	color: white !important;
 }
 
+.user-picture{
+	background-size: cover;
+	background-image: url(/images/default_profile.png);
+	background-position: center;
+}
+

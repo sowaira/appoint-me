@@ -17,9 +17,9 @@ ActiveAdmin.register Designer do
 	  def create
 	    @designer = Designer.invite_designer(params)
 	    if @designer and  @designer.errors.empty?
-	      redirect_to superadmin_designer_path(@designer)
+	      redirect_to superadmin_designer_path(@designer), notice: "Designer Created successfully"
 	    else
-	      redirect_to new_superadmin_designer_path
+	      redirect_to new_superadmin_designer_path, alert: "Please fill the form correctly!"
 	      return
 	    end
 	  end
@@ -36,6 +36,9 @@ ActiveAdmin.register Designer do
 	  end
 	  column("name") do |item| 
 	    item.name
+	  end
+	  column("Business") do |item| 
+	    link_to item.business.name, superadmin_business_path(item.business)
 	  end
 	  column("unconfirmed_email") do |item| 
 	    item.unconfirmed_email

@@ -13,4 +13,9 @@ class MailerMailer < ApplicationMailer
 		mail(to: @designer.unconfirmed_email, subject: 'Confirmation of email')
 	end
 
+	def confirmation_email_business(business)
+		@business = business
+		mail(to: @business.unconfirmed_email, subject: 'Confirmation of email')
+	end
+
 end
