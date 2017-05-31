@@ -1,7 +1,51 @@
-<h3>This is the dashboard page</h3>
-<div class="">
-	<%= current_business.name %></i>
-</div><br>
+<div class="well">
+	
+	<h3>This is the dashboard page</h3>
+	<div class="">
+		<b>Busines's name: </b> <%= current_business.name %></i>
+	</div><br>
 
-<img src="<%=current_business.picture.url%>"  width="150" >
+	<img src="<%=current_business.picture.url%>"  width="150" >
+	<br>
+</div>
+<hr>
+<div class="panel panel-default">
+  <div class="panel-heading">Designers</div>
+  <div class="panel-body">
+    <% current_business.designers.each do |designer| %>
+    		<div class="row">
+    			<div class="col-md-2">
+    				<img src="<%=designer.picture.url%>" class="thumbnail" width="100">
+    			</div>
+    			<div class="col-md-3">
+    				<%= designer.forename %>
+    			</div>
+    			<div class="col-md-4">
+    				<%= designer.foreemail %> (<i><%= (designer.confirmation_token.present? ? "Pending" : "Confirmed") %></i>)
+    			</div>
+    			<div class="col-md-2">
+    				<%= link_to "Delete", delete_designer_under_business_path(designer), method: :delete %> 
+    			</div>
+    		
+    		</div>
+    		
+    <% end %>
+  </div>
+</div>
+
+
+<%= form_tag invite_designer_under_business_path, method: :post  do %>
+	<div class="row">
+		<div class="col-md-5">
+			<input class="form-control" placeholder="Ex: designer@appoint.me" name="designer[email]">
+		</div>
+		<div class="col-md-3">
+			<button class="btn btn-info" type="submit">
+				Invite designer to your business	
+			</button>
+		</div>
+	</div>
+<% end %>
+
+<br>
 <br>

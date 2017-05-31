@@ -34,6 +34,10 @@ Rails.application.routes.draw do
 		get '/businesses/logout' => 'businesses#destroy', as: :logout_business
 		get '/businesses/dashboard' => 'businesses#dashboard', as: :business_dashboard
 
+		delete '/businesses/designers/:id' => 'businesses#delete_designer', as: :delete_designer_under_business
+		post '/businesses/designers' => 'businesses#invite_designer', as: :invite_designer_under_business
+
+
 
   	#api
 	namespace :api , :defaults => { :format => 'json' } do

@@ -1,6 +1,25 @@
 class BusinessesController < ApplicationController
 
-	def show
+
+
+	def invite_designer
+		params["designer"]["business_id"] = current_business.id
+		@designer = Designer.invite_designer(params)
+		if @designer and  @designer.errors.empty?
+		  redirect_to business_dashboard_path, notice: "Designer invited successfully"
+		else
+		  redirect_to business_dashboard_path, alert: "Please fill the form correctly!"
+		  return
+		end
+	end
+
+	def delete_designer
+		designer = Designer.find_by(id: params["id"])
+		designer.destroy
+		redirect_to business_dashboard_path
+	end
+
+	def dashboard
 		
 	end
 

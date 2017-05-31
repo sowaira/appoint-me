@@ -1,7 +1,9 @@
 class Designer < ApplicationRecord
     belongs_to :business
+    has_many :appointments
 
 	mount_uploader :picture, GeneralPictureUploader
+
 
 
 	def self.confirm_email_designer(params)
@@ -16,11 +18,15 @@ class Designer < ApplicationRecord
 	def self.invite_designer(params)
     	missing_fields = Utils.check_missing_fields(params, ["email"], "designer")
 
-    	designer = Designer.new(	
-            unconfirmed_email: params["designer"]["email"],
-    		business_id: params["designer"]["business_id"],
-    		confirmation_token: Digest::SHA1.hexdigest([Time.now, rand].join))
-    	return if missing_fields.size > 0 or Designer.find_by(email: params["designer"]["email"])
+        return if missing_fields.size > 0 or Designer.find_by(email: params["designer"]["email"])
+        designer = Designer.find_by(email: params["designer"]["email"]) || Designer.find_by(unconfirmed_email: params["designer"]["email"])
+        
+        unless designer
+            designer = Designer.new(    
+                unconfirmed_email: params["designer"]["email"],
+                business_id: params["designer"]["business_id"],
+                confirmation_token: Digest::SHA1.hexdigest([Time.now, rand].join))
+        end
 
     	if designer.save
     		MailerMailer.confirmation_email_designer(designer).deliver
@@ -31,6 +37,11 @@ class Designer < ApplicationRecord
 
     def forename
         (self.name.present? ? self.name : self.email)
+    end
+
+
+    def foreemail
+        (self.email.present? ? self.email : self.unconfirmed_email)
     end
 
 
